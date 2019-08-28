@@ -2,7 +2,6 @@ import {
   Meteor
 } from 'meteor/meteor';
 
-var multipart = require('parse-multipart');
 
 Meteor.startup(() => {
   // code to run on server at startup
@@ -23,7 +22,7 @@ Router.route('/api/v1/data/push', function () {
   SensorsData.insert({
     ...data
   })
-  res.end('hello from the server\n');
+  res.end('sensors data was sucessfully saved\n');
 }, {
   where: 'server'
 });
@@ -33,7 +32,7 @@ Router.route('/api/v1/file/upload', function () {
   var res = this.response;
   console.log(this.request.file)
   console.log(this.request.fils)
-  res.end('hello from the server\n');
+  res.end('file was processed\n');
 }, {
   where: 'server'
 });
