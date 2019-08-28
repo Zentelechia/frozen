@@ -10,7 +10,7 @@ var SensorsData = new Meteor.Collection('SensorsData')
 Router.route('/api/v1/data/push', function () {
   var data = this.request && this.request.query;
   var res = this.response;
-  console.log(data.query)
+  console.log(data)
   if (data && data.id)
     Sensors.upsert({
       id: data.id
@@ -21,6 +21,15 @@ Router.route('/api/v1/data/push', function () {
   SensorsData.insert({
     ...data
   })
+  res.end('hello from the server\n');
+}, {
+  where: 'server'
+});
+
+Router.route('/api/v1/file/upload', function () {
+  var data = this.request;
+  var res = this.response;
+  console.log(data)
   res.end('hello from the server\n');
 }, {
   where: 'server'
